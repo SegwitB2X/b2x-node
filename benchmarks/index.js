@@ -9,7 +9,7 @@ console.log('Segwit2x Service native interface vs. Segwit2x JSON RPC interface')
 console.log('----------------------------------------------------------------------');
 
 // To run the benchmarks a fully synced Bitcore Core directory is needed. The RPC comands
-// can be modified to match the settings in bitcoinx.conf.
+// can be modified to match the settings in bitcoin2x.conf.
 
 var fixtureData = {
   blockHashes: [

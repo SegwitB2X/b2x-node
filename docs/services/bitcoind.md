@@ -2,20 +2,20 @@
 
 ## Configuration
 
-The default configuration will include a "spawn" configuration in "bitcoind". This defines the location of the block chain database and the location of the `bitcoind` daemon executable. The below configuration points to a local clone of `bitcoin`, and will start `bitcoind` automatically with your Node.js application.
+The default configuration will include a "spawn" configuration in "bitcoind". This defines the location of the block chain database and the location of the `bitcoin2xd` daemon executable. The below configuration points to a local clone of `bitcoin`, and will start `bitcoin2xd` automatically with your Node.js application.
 
 ```json
   "servicesConfig": {
     "bitcoind": {
       "spawn": {
-        "datadir": "/home/bitcoinx/.bitcoin",
-        "exec": "/home/bitcoinx/src/bitcoind"
+        "datadir": "/home/bitcoinx/.bitcoin2x",
+        "exec": "/home/bitcoinx/src/bitcoin2xd"
       }
     }
   }
 ```
 
-It's also possible to connect to separately managed `bitcoind` processes with round-robin quering, for example:
+It's also possible to connect to separately managed `bitcoin2xd` processes with round-robin quering, for example:
 
 ```json
   "servicesConfig": {
@@ -24,8 +24,8 @@ It's also possible to connect to separately managed `bitcoind` processes with ro
         {
           "rpchost": "127.0.0.1",
           "rpcport": 30521,
-          "rpcuser": "bitcoin",
-          "rpcpassword": "local321",
+          "rpcuser": "bitcoin2xd",
+          "rpcpassword": "password",
           "zmqpubrawtx": "tcp://127.0.0.1:30611"
         },
         {

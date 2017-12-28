@@ -41,7 +41,7 @@ npm install
 cd ../b2x-node
 npm install
 ```
-**Note**: If you get a message about not being able to download bitcoin distribution, you'll need to compile bitcoind from source, and setup your configuration to use that version.
+**Note**: If you get a message about not being able to download bitcoin2x distribution, you'll need to compile bitcoin2xd from source, and setup your configuration to use that version.
 
 
 We now will setup symlinks in `b2x-node` *(repeat this for any other modules you're planning on developing)*:
@@ -111,8 +111,8 @@ Edit `b2x-node.json` with something similar to:
   "servicesConfig": {
     "bitcoind": {
       "spawn": {
-        "datadir": "/home/<youruser>/.bitcoinx",
-        "exec": "/home/<youruser>/bitcoinx/src/bitcoind"
+        "datadir": "/home/<youruser>/.bitcoin2x",
+        "exec": "/home/<youruser>/bitcoinx/src/bitcoin2xd"
       }
     }
   }
@@ -131,7 +131,7 @@ ln -s ~/insight-api
 ln -s ~/insight-ui
 ```
 
-Make sure that the `<datadir>/bitcoinx.conf` has the necessary settings, for example:
+Make sure that the `<datadir>/bitcoin2x.conf` has the necessary settings, for example:
 ```
 server=1
 whitelist=127.0.0.1

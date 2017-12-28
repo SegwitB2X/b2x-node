@@ -18,13 +18,13 @@ var log = index.log;
 var errors = index.errors;
 
 var Transaction = bitcore.Transaction;
-var readFileSync = sinon.stub().returns(fs.readFileSync(path.resolve(__dirname, '../data/bitcoinx.conf')));
+var readFileSync = sinon.stub().returns(fs.readFileSync(path.resolve(__dirname, '../data/bitcoin2x.conf')));
 var BitcoinService = proxyquire('../../lib/services/bitcoind', {
   fs: {
     readFileSync: readFileSync
   }
 });
-var defaultBitcoinConf = fs.readFileSync(path.resolve(__dirname, '../data/default.bitcoinx.conf'), 'utf8');
+var defaultBitcoinConf = fs.readFileSync(path.resolve(__dirname, '../data/default.bitcoin2x.conf'), 'utf8');
 
 describe('Segwit2x Service', function() {
   var txhex = '01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0704ffff001d0104ffffffff0100f2052a0100000043410496b538e853519c726a2c91e61ec11600ae1390813a627c66fb8be7947be63c52da7589379515d4e0a604f8141781e62294721166bf621e73a82cbf2342c858eeac00000000';
@@ -357,7 +357,7 @@ describe('Segwit2x Service', function() {
     afterEach(function() {
       sandbox.restore();
     });
-    it('will parse a bitcoinx.conf file', function() {
+    it('will parse a bitcoin2x.conf file', function() {
       var TestBitcoin = proxyquire('../../lib/services/bitcoind', {
         fs: {
           readFileSync: readFileSync,
@@ -423,7 +423,7 @@ describe('Segwit2x Service', function() {
     it('should throw an exception if txindex isn\'t enabled in the configuration', function() {
       var TestBitcoin = proxyquire('../../lib/services/bitcoind', {
         fs: {
-          readFileSync: sinon.stub().returns(fs.readFileSync(__dirname + '/../data/badbitcoinx.conf')),
+          readFileSync: sinon.stub().returns(fs.readFileSync(__dirname + '/../data/badbitcoin2x.conf')),
           existsSync: sinon.stub().returns(true),
         },
         mkdirp: {
@@ -480,7 +480,7 @@ describe('Segwit2x Service', function() {
     afterEach(function() {
       sandbox.restore();
     });
-    it('should warn the user if reindex is set to 1 in the bitcoinx.conf file', function() {
+    it('should warn the user if reindex is set to 1 in the bitcoin2x.conf file', function() {
       var bitcoind = new BitcoinService(baseConfig);
       var config = {
         txindex: 1,
@@ -829,7 +829,7 @@ describe('Segwit2x Service', function() {
         }
       };
       var bitcoind = new BitcoinService(config);
-      bitcoind._getNetworkConfigPath().should.equal('testnet3/bitcoinx.conf');
+      bitcoind._getNetworkConfigPath().should.equal('testnet3/bitcoin2x.conf');
     });
     it('will get default rpc port for regtest', function() {
       bitcore.Networks.enableRegtest();
@@ -843,7 +843,7 @@ describe('Segwit2x Service', function() {
         }
       };
       var bitcoind = new BitcoinService(config);
-      bitcoind._getNetworkConfigPath().should.equal('regtest/bitcoinx.conf');
+      bitcoind._getNetworkConfigPath().should.equal('regtest/bitcoin2x.conf');
     });
   });
 
@@ -1749,7 +1749,7 @@ describe('Segwit2x Service', function() {
       bitcoind._loadSpawnConfiguration = sinon.stub();
       bitcoind.spawn = {};
       bitcoind.spawn.exec = 'testexec';
-      bitcoind.spawn.configPath = 'testdir/bitcoinx.conf';
+      bitcoind.spawn.configPath = 'testdir/bitcoin2x.conf';
       bitcoind.spawn.datadir = 'testdir';
       bitcoind.spawn.config = {};
       bitcoind.spawn.config.rpcport = 20001;
@@ -1766,7 +1766,7 @@ describe('Segwit2x Service', function() {
         spawn.callCount.should.equal(1);
         spawn.args[0][0].should.equal('testexec');
         spawn.args[0][1].should.deep.equal([
-          '--conf=testdir/bitcoinx.conf',
+          '--conf=testdir/bitcoin2x.conf',
           '--datadir=testdir',
           '--testnet'
         ]);
@@ -1800,7 +1800,7 @@ describe('Segwit2x Service', function() {
       bitcoind.spawn = {};
       bitcoind.spawn.exec = 'bitcoind';
       bitcoind.spawn.datadir = '/tmp/bitcoin';
-      bitcoind.spawn.configPath = '/tmp/bitcoin/bitcoinx.conf';
+      bitcoind.spawn.configPath = '/tmp/bitcoin/bitcoin2x.conf';
       bitcoind.spawn.config = {};
       bitcoind.spawnRestartTime = 1;
       bitcoind._loadTipFromNode = sinon.stub().callsArg(1);
@@ -1838,7 +1838,7 @@ describe('Segwit2x Service', function() {
       bitcoind.spawn = {};
       bitcoind.spawn.exec = 'bitcoind';
       bitcoind.spawn.datadir = '/tmp/bitcoin';
-      bitcoind.spawn.configPath = '/tmp/bitcoin/bitcoinx.conf';
+      bitcoind.spawn.configPath = '/tmp/bitcoin/bitcoin2x.conf';
       bitcoind.spawn.config = {};
       bitcoind.spawnRestartTime = 1;
       bitcoind._loadTipFromNode = sinon.stub().callsArg(1);
@@ -1885,7 +1885,7 @@ describe('Segwit2x Service', function() {
       bitcoind.spawn = {};
       bitcoind.spawn.exec = 'bitcoind';
       bitcoind.spawn.datadir = '/tmp/bitcoin';
-      bitcoind.spawn.configPath = '/tmp/bitcoin/bitcoinx.conf';
+      bitcoind.spawn.configPath = '/tmp/bitcoin/bitcoin2x.conf';
       bitcoind.spawn.config = {};
       bitcoind.spawnRestartTime = 1;
       bitcoind._loadTipFromNode = sinon.stub().callsArg(1);
@@ -1924,7 +1924,7 @@ describe('Segwit2x Service', function() {
       bitcoind._loadSpawnConfiguration = sinon.stub();
       bitcoind.spawn = {};
       bitcoind.spawn.exec = 'testexec';
-      bitcoind.spawn.configPath = 'testdir/bitcoinx.conf';
+      bitcoind.spawn.configPath = 'testdir/bitcoin2x.conf';
       bitcoind.spawn.datadir = 'testdir';
       bitcoind.spawn.config = {};
       bitcoind.spawn.config.rpcport = 20001;
@@ -1954,7 +1954,7 @@ describe('Segwit2x Service', function() {
       bitcoind._loadSpawnConfiguration = sinon.stub();
       bitcoind.spawn = {};
       bitcoind.spawn.exec = 'testexec';
-      bitcoind.spawn.configPath = 'testdir/bitcoinx.conf';
+      bitcoind.spawn.configPath = 'testdir/bitcoin2x.conf';
       bitcoind.spawn.datadir = 'testdir';
       bitcoind.spawn.config = {};
       bitcoind.spawn.config.rpcport = 20001;

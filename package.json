@@ -2,7 +2,7 @@
   "name": "b2x-node",
   "description": "Full node with extended capabilities using Segwit2x Core",
   "author": "",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "./index.js",
   "repository": "git://github.com/SegwitB2X/b2x-node.git",
   "homepage": "https://github.com/SegwitB2X/b2x-node",
