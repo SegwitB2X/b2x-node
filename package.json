@@ -2,7 +2,7 @@
   "name": "b2x-node",
   "description": "Full node with extended capabilities using Segwit2x Core",
   "author": "",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "main": "./index.js",
   "repository": "git://github.com/SegwitB2X/b2x-node.git",
   "homepage": "https://github.com/SegwitB2X/b2x-node",
@@ -22,11 +22,14 @@
   },
   "tags": [
     "bitcoinx",
+    "bitcoin2x",
+    "bitcoin2xd",
+    "b2x",
     "bitcoind"
   ],
   "dependencies": {
     "async": "^1.3.0",
-    "b2x-rpc": "^0.1.0",
+    "b2x-rpc": "^0.2.0",
     "b2x-core-lib": "^0.1.0",
     "bitcore-lib": "^0.13.13",
     "body-parser": "^1.13.3",
